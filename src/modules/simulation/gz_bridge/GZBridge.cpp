@@ -180,7 +180,7 @@ int GZBridge::init()
 	}
 
 	// IMU: /world/$WORLD/model/$MODEL/link/base_link/sensor/imu_sensor/imu
-	std::string imu_topic = "/world/" + _world_name + "/model/" + _model_name + "/link/base_link/sensor/imu_sensor/imu";
+	std::string imu_topic = "/world/" + _world_name + "/model/" + _model_name + "/link/imu_link/sensor/imu_sensor/imu";
 
 	if (!_node.Subscribe(imu_topic, &GZBridge::imuCallback, this)) {
 		PX4_ERR("failed to subscribe to %s", imu_topic.c_str());
@@ -209,7 +209,7 @@ int GZBridge::init()
 #endif
 	// Air pressure: /world/$WORLD/model/$MODEL/link/base_link/sensor/air_pressure_sensor/air_pressure
 	std::string air_pressure_topic = "/world/" + _world_name + "/model/" + _model_name +
-					 "/link/base_link/sensor/air_pressure_sensor/air_pressure";
+					 "/link/barometer_link/sensor/air_pressure_sensor/air_pressure";
 
 	if (!_node.Subscribe(air_pressure_topic, &GZBridge::barometerCallback, this)) {
 		PX4_ERR("failed to subscribe to %s", air_pressure_topic.c_str());
@@ -218,7 +218,7 @@ int GZBridge::init()
 
 	// GPS: /world/$WORLD/model/$MODEL/link/base_link/sensor/navsat_sensor/navsat
 	std::string nav_sat_topic = "/world/" + _world_name + "/model/" + _model_name +
-				    "/link/base_link/sensor/navsat_sensor/navsat";
+				    "/link/navsat_link/sensor/navsat_sensor/navsat";
 
 	if (!_node.Subscribe(nav_sat_topic, &GZBridge::navSatCallback, this)) {
 		PX4_ERR("failed to subscribe to %s", nav_sat_topic.c_str());

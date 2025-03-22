@@ -1,0 +1,61 @@
+#!/bin/sh
+#
+# @name Usv
+# @type Boat
+#
+
+#. ${R}etc/init.d/rc.rover_differential_defaults
+
+# PX4_SIMULATOR=${PX4_SIMULATOR:=gz}
+# PX4_GZ_WORLD=${PX4_GZ_WORLD:=sydney_regatta}
+# PX4_SIM_MODEL=${PX4_SIM_MODEL:=usv_model01}
+# PX4_GZ_MODEL_POSE=${PX4_GZ_MODEL_POSE:="-532,162,0,0,0,1"}
+
+
+param set-default SIM_GZ_EN 1 # Gazebo bridge
+
+param set-default SENS_EN_GPSSIM 1
+param set-default SENS_EN_BAROSIM 0
+param set-default SENS_EN_MAGSIM 1
+
+######### Actuator mapping (Rover) #############
+# param set-default SIM_GZ_WH_FUNC1 101 # right wheel
+# param set-default SIM_GZ_WH_MIN1 0
+# param set-default SIM_GZ_WH_MAX1 200
+# param set-default SIM_GZ_WH_DIS1 100
+
+# param set-default SIM_GZ_WH_FUNC2 102 # left wheel
+# param set-default SIM_GZ_WH_MIN2 0
+# param set-default SIM_GZ_WH_MAX2 200
+# param set-default SIM_GZ_WH_DIS2 100
+
+param set-default SIM_GZ_EC_FUNC1 201
+param set-default SIM_GZ_EC_FUNC2 202
+
+param set-default SIM_GZ_EC_MIN1 100
+param set-default SIM_GZ_EC_MIN2 100
+
+param set-default SIM_GZ_EC_MAX1 900
+param set-default SIM_GZ_EC_MAX2 900
+
+param set-default SIM_GZ_EC_DIS1 712
+param set-default SIM_GZ_EC_DIS2 712
+
+param set-default SIM_GZ_EC_REV 3
+
+#Disable ESC checks
+param set-default FD_ESCS_EN 0
+param set-default COM_DISARM_PRFLT -1
+
+param set-default EKF2_MAG_TYPE 1 # make sure magnetometer is fused even when not flying
+
+param set-default MAV_TYPE 11 # Surface vessel, boat
+
+#param set-default CA_R_REV 3 # Right and left motors reversible
+
+#param set-default CA_AIRFRAME 6 # Rover (Differential)
+
+#param set-default SIM_GZ_WH_REV 1 # reverse right wheel
+
+#param set-default COM_RCL_EXCEPT 4
+#param set-default COM_RC_IN_MODE 4
